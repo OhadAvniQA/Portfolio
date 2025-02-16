@@ -1,0 +1,17 @@
+UpdateMany function: 
+db.CustomerDetail.updateMany( 
+   { email: { $regex: /@qa\.redmatch\./ } }, 
+   [ 
+     { 
+       $set: { 
+         email: { 
+           $replaceAll: { 
+             input: "$email", 
+             find: "@qa.redmatch.", 
+             replacement: "@qa.redmatch2." 
+           } 
+         } 
+       } 
+     } 
+   ] 
+ ) 
